@@ -1,0 +1,36 @@
+Arguments: 
+  /Users/alfa/.nvm/versions/node/v6.11.2/bin/node /usr/local/Cellar/yarn/1.2.1/libexec/bin/yarn.js init
+
+PATH: 
+  /Users/alfa/.nvm/versions/node/v6.11.2/bin:/Users/alfa/.rvm/gems/ruby-2.4.1/bin:/Users/alfa/.rvm/gems/ruby-2.4.1@global/bin:/Users/alfa/.rvm/rubies/ruby-2.4.1/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/alfa/.rvm/bin
+
+Yarn version: 
+  1.2.1
+
+Node version: 
+  6.11.2
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (/usr/local/Cellar/yarn/1.2.1/libexec/lib/cli.js:120971:13)
+      at emitNone (events.js:86:13)
+      at Interface.emit (events.js:185:7)
+      at Interface._ttyWrite (readline.js:726:16)
+      at ReadStream.onkeypress (readline.js:120:10)
+      at emitTwo (events.js:106:13)
+      at ReadStream.emit (events.js:191:7)
+      at emitKeys (internal/readline.js:389:14)
+      at next (native)
+      at ReadStream.onData (readline.js:972:36)
