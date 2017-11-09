@@ -3,8 +3,6 @@ import React, {Component} from 'react'
 export default class Sentence extends Component {
 
 
-
-
 	render(){
 		return(
 			<div className="sentence">
