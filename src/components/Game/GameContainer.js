@@ -1,4 +1,6 @@
 import React from 'react';
+import RaceTrack from './RaceTrack.js'
+import TypingContainer from './TypingContainer.js'
 
 export default class GameContainer extends React.Component {
   state = {
@@ -8,7 +10,10 @@ export default class GameContainer extends React.Component {
 
   render() {
     return (
-      <p>test</p>
+      <div className="game-container">
+      	<RaceTrack />
+      	<TypingContainer />
+      </div>
     )
   }
 }

@@ -3,3 +3,45 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.header {
+	height: 100px;
+	background-color: #0000ff;
+	color: white;
+
+}
+
+.header h1 {
+	margin: 0;
+	padding: 30px 0 0 0;
+}
+
+.racetrack {
+	height: 220px;
+}
+
+.typing-container {
+	height: 220px;
+}
+
+.sentence {
+
+}
+
+.text-field {
+	
+}
+
+.h1-style {
+	font: 30px bold Arial, sans-serif;
+	line-height: 1.2em;
+	margin: 20px 0 15px 0;
+}
+
+#type-here {
+	width: 80%;
+	height: 40px;
+	font: 18px bold Arial, sans-serif;
+	border-radius: 4px;
+	box-shadow: 0;
+}
