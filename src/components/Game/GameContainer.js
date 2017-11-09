@@ -13,14 +13,12 @@ export default class GameContainer extends Component {
 	}
 
 	handleKeyPress = (event) => {
-		// console.log('handleKeyPress')
 		this.setState({
 			currentCharCode: event.charCode
 		})
 	}
 
 	handleChange = (event) => {
-		// console.log('handleChange')
 		let textLength = event.target.value.length
 		this.setState({
 			currentCharIndex: textLength
@@ -28,9 +26,6 @@ export default class GameContainer extends Component {
 	}
 
 	compareCurrentChar = () => {
-		// compare this.state.currentCharCode to this.state.randSentence[this.state.currentCharIndex]
-		// if true, increment maxLength
-		// if false, do not inrremement maxLength and set state to false for lastCorrect
 		let { currentCharCode } = this.state
 		let { randSentence } = this.state
 		let { currentCharIndex } = this.state
@@ -47,7 +42,6 @@ export default class GameContainer extends Component {
 	}
 
 	render(){
-		console.log(this.state)
 		return(
 			<div className="game-container">
         <RaceTrack />
