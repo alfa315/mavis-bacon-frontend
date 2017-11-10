@@ -15,8 +15,9 @@ export default class GameContainer extends Component {
 
 	handleKeyDown = (event) => {
 		console.log(event.keyCode);
-
-		if(event.keyCode === 8 || event.keyCode === 46) {
+		if((event.keyCode === 8 || event.keyCode === 46) && this.state.textLength === 1 && this.state.currentCharIndex === 0){
+			return null
+		}else if(event.keyCode === 8 || event.keyCode === 46) {
 			this.setState({
 				currentCharCode: 0,
 				textLength: this.state.textLength - 1,
