@@ -8,44 +8,20 @@ export default class GameContainer extends Component {
 	state = {
 		randSentence: "I AM IN A GLASS CASE OF EMOTION",
 		currentText: "",
-    currentCharCode: 0,
-		currentCharIndex: 0,
-		lastPressCorrect: '',
-		textLength: 1
-	}
-
-	handleKeyDown = (event) => {
-		if ((event.keyCode === 8 || event.keyCode === 46) && this.state.textLength === 1 && this.state.currentCharIndex === 0){
-			return null
-		} else if (event.keyCode === 8 || event.keyCode === 46) {
-			this.setState({
-				currentCharCode: 0,
-				textLength: this.state.textLength - 1,
-				currentCharIndex: this.state.currentCharIndex - 1
-			})
-		} else if (event.keyCode !== this.state.randSentence.charCodeAt(this.state.currentCharIndex)) {
-			event.preventDefault()
-			this.setState({
-				lastPressCorrect: 'false'
-			})
-		} else {
-			this.setState({
-				currentCharCode: event.keyCode
-			})
-		}
+		lastPressCorrect: ''
 	}
 
 	handleChange = (event) => {
-		if(this.state.currentCharCode === this.state.randSentence.charCodeAt(this.state.currentCharIndex)){
+
+		const reg = new RegExp(`^${event.target.value}`) //Add , 'i' for case insensitivity
+		if (!!this.state.randSentence.match(reg)){
 			this.setState({
-				currentCharIndex: event.target.value.length,
-				currentText: event.target.value,
-				textLength: event.target.value.length + 1,
+				currentText: event.target.value, 
 				lastPressCorrect: 'true'
 			})
 		} else {
 			this.setState({
-				lastPressCorrect: 'false',
+				lastPressCorrect: 'false'
 			})
 		}
 	}
@@ -56,7 +32,7 @@ export default class GameContainer extends Component {
 			<div className="game-container">
         <RaceTrack />
 				<Sentence textOutput={this.state.randSentence} />
-				<TextField handleKeyDown={this.handleKeyDown} handleChange={this.handleChange} maxLen={this.state.textLength}/>
+				<TextField handleKeyDown={this.handleKeyDown} textValue={this.state.currentText} handleChange={this.handleChange} maxLen={this.state.textLength}/>
 				<FeedbackContainer rightOrWrong={this.state.lastPressCorrect} />
 			</div>
 		)

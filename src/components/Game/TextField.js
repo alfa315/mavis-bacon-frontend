@@ -6,12 +6,13 @@ export default class TextField extends Component {
 			<div className="text-field">
 				<input
 					type="text"
+					value={this.props.textValue}
 					className="input"
 					placeholder="SEND ME A MESSAGE"
 					id="type-here"
-					onKeyDown={this.props.handleKeyDown}
+					// onKeyDown={this.props.handleKeyDown}
 					onChange={this.props.handleChange}
-					maxLength={this.props.maxLen}
+					// maxLength={this.props.maxLen}
 					autoFocus={true}
 				/>
 			</div>
