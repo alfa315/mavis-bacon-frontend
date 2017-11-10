@@ -12,6 +12,7 @@ export default class TextField extends Component {
 					onKeyDown={this.props.handleKeyDown}
 					onChange={this.props.handleChange}
 					maxLength={this.props.maxLen}
+					autoFocus={true}
 				/>
 			</div>
 		)
