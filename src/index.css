@@ -20,6 +20,15 @@ body {
 	height: 220px;
 }
 
+.lane {
+	height: 110px;
+	background-color: #272222;
+}
+
+.lane-divider {
+	border-bottom: 2px dashed yellow;
+}
+
 .typing-container {
 	height: 220px;
 }
@@ -45,3 +54,15 @@ body {
 	border-radius: 4px;
 	box-shadow: 0;
 }
+
+@keyframes fadeinout {
+    0%, 100% {opacity: 0;}
+    50% {opacity: 1;}
+}
+
+.fade-in {
+	animation: fadeinout 2s linear;
+	opacity: 0;
+}
+
+

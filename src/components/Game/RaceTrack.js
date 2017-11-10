@@ -8,7 +8,9 @@ export default class RaceTrack extends Component {
 	render(){
 		return(
 			<div className="racetrack">
-				<h2>RACETrACK</h2>
+				<div className="lane lane-divider">Lane 1</div>
+
+				<div className="lane">Lane 2</div>
 			</div>
 		)
 	}
