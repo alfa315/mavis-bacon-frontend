@@ -10,7 +10,7 @@ export default class TextField extends Component {
 					className="input"
 					placeholder="SEND ME A MESSAGE"
 					id="type-here"
-					// onKeyDown={this.props.handleKeyDown}
+					onKeyDown={this.props.handleKeyDown}
 					onChange={this.props.handleChange}
 					// maxLength={this.props.maxLen}
 					autoFocus={true}
