@@ -7,18 +7,28 @@ import GameOverModal from './GameOverModal.js'
 
 export default class GameContainer extends Component {
 	state = {
-		randSentence: "",
+		randSentence: "Hi everybody.",
 		currentText: "",
 		lastPressCorrect: '',
 		userImgPosition: 0,
 		marvisPosition: 0,
-		marvisTimer: null,
+		raceTimer: 0,
 		gameOverModal: "none",
-		gameWinner: false
+		gameWinner: false,
+		correctCharPerMin: 0,
+		interval: null
 	}
 
 	componentWillMount() {
-		this.fetchData()
+		// this.fetchData()
+	}
+
+	componentDidMount() {
+		let timer = setInterval(this.increaseMarvis, 1000)
+		this.setState({
+			interval: timer
+		})
+		setTimeout(function( ) { clearInterval( timer ); }, 60000);
 	}
 
 	fetchData() {
@@ -27,52 +37,58 @@ export default class GameContainer extends Component {
 		 .then(quote => this.setState({ randSentence: quote.quote.trim()}));
 	}
 
-	componentDidMount() {
-		let timer = setInterval(this.increaseMarvis, 1000)
-		this.setState({
-			marvisTimer: timer
-		})
-		setTimeout(function( ) { clearInterval( timer ); }, 60000);
-	}
-
 	increaseMarvis = () => {
 		let difficulty = (window.innerWidth / this.state.randSentence.length) * 4
 		this.setState({
-			marvisPosition: this.state.marvisPosition + difficulty
+			marvisPosition: this.state.marvisPosition + difficulty,
+			raceTimer: this.state.raceTimer + 1
 		})
 		if(this.state.marvisPosition > window.innerWidth) {
 			this.setState({
 				gameOverModal: "block"
 			})
+			clearInterval(this.state.interval)
 		}
 	}
 
+	calculateCharPerMin = () => {
+		let val = (this.state.currentText.length / this.state.raceTimer) * 60
+		return val
+	}
+
+	calculateWordsPerMin = () => {
+		let wordsCount = this.state.randSentence.split(" ").length
+		return (wordsCount / this.state.raceTimer) * 60
+	}
+
 	handleChange = (event) => {
-		let ev = event
 		const reg = new RegExp(`^${event.target.value}`) //Add , 'i' for case insensitivity
 		if (!!this.state.randSentence.match(reg)){
 			this.setState({
 				userImgPosition: (window.innerWidth * (event.target.value.length/this.state.randSentence.length)),
 				currentText: event.target.value,
-				lastPressCorrect: 'true'
+				lastPressCorrect: 'true',
+				correctCharPerMin: this.calculateCharPerMin()
 			})
 			if(event.target.value.length === this.state.randSentence.length) {
 				this.setState({
 					gameOverModal: "block",
 					gameWinner: true
 				})
-		} else {
-			this.setState({
-				lastPressCorrect: 'false'
-			})
+				clearInterval(this.state.interval)
+			} else {
+				this.setState({
+					lastPressCorrect: 'false'
+				})
+			}
 		}
 	}
-}
 
 	render(){
 		return(
 			<div className="game-container">
-        <RaceTrack imgChangeAmt={this.state.userImgPosition}
+        <RaceTrack 
+        	imgChangeAmt={this.state.userImgPosition}
 					marvisImgChg={this.state.marvisPosition}
 				/>
 				<Sentence
@@ -88,6 +104,7 @@ export default class GameContainer extends Component {
 				<GameOverModal
 					gameOverModal={this.state.gameOverModal}
 					gameWinner={this.state.gameWinner}
+					wpm={this.calculateWordsPerMin}
 				/>
 			</div>
 		)
