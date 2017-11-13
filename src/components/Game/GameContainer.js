@@ -7,7 +7,7 @@ import GameOverModal from './GameOverModal.js'
 
 export default class GameContainer extends Component {
 	state = {
-		randSentence: "Hi everybody.",
+		randSentence: "",
 		currentText: "",
 		lastPressCorrect: '',
 		userImgPosition: 0,
@@ -20,7 +20,7 @@ export default class GameContainer extends Component {
 	}
 
 	componentWillMount() {
-		// this.fetchData()
+		this.fetchData()
 	}
 
 	componentDidMount() {
@@ -48,6 +48,7 @@ export default class GameContainer extends Component {
 				gameOverModal: "block"
 			})
 			clearInterval(this.state.interval)
+			this.fetchGames()
 		}
 	}
 
@@ -57,7 +58,7 @@ export default class GameContainer extends Component {
 	}
 
 	calculateWordsPerMin = () => {
-		let wordsCount = this.state.randSentence.split(" ").length
+		let wordsCount = this.state.currentText !== "" ? this.state.currentText.split(" ").length : 0
 		return (wordsCount / this.state.raceTimer) * 60
 	}
 
@@ -76,6 +77,7 @@ export default class GameContainer extends Component {
 					gameWinner: true
 				})
 				clearInterval(this.state.interval)
+				this.fetchGames()
 			} else {
 				this.setState({
 					lastPressCorrect: 'false'
@@ -84,10 +86,27 @@ export default class GameContainer extends Component {
 		}
 	}
 
+	fetchGames = () => {
+		fetch('http://127.0.0.1:3000/api/v1/games', {
+			method: 'POST',
+			body: JSON.stringify({
+				wpm: `${this.calculateWordsPerMin()}`,
+				game_won: `${this.state.gameWinner}`,
+				user_id: `${this.props.currUserId}`
+			}),
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
+			}
+		})
+		.then(res => res.json())
+		.then(data => console.log(data))
+	}
+
 	render(){
 		return(
 			<div className="game-container">
-        <RaceTrack 
+        <RaceTrack
         	imgChangeAmt={this.state.userImgPosition}
 					marvisImgChg={this.state.marvisPosition}
 				/>
