@@ -27,7 +27,6 @@ export default class GameContainer extends Component {
 
 	componentDidMount() {
 		let timer = setInterval(this.increaseMarvis, 1000)
-		fetch
 		this.setState({
 			marvisTimer: timer
 		})
