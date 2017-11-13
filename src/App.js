@@ -39,7 +39,6 @@ class App extends Component {
 	}
 
   render() {
-  	console.log(this.state)
   	if (this.state.currUserId) {
 	    return (
 	      <div className="App">
