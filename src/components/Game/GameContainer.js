@@ -40,45 +40,36 @@ export default class GameContainer extends Component {
 		this.setState({
 			marvisPosition: this.state.marvisPosition + difficulty
 		})
-	}
-
-	handleChange = (event) => {
-		let ev = event
-		const reg = new RegExp(`^${event.target.value}`) //Add , 'i' for case insensitivity
-		if (!!this.state.randSentence.match(reg)){
-			console.log(event.target.value);
-			this.setState({
-				userImgPosition: (window.innerWidth * (event.target.value.length/this.state.randSentence.length)),
-				currentText: event.target.value,
-				lastPressCorrect: 'true'
-			})
-			if (event.target.value === this.state.randSentence)
-				this.handleModal(ev)
-		} else {
-			this.setState({
-				lastPressCorrect: 'false'
-			})
-		}
-	}
-
-	handleModal = (event) => {
-		console.log(this.state.marvisPosition)
-		console.log(window.innerWidth)
-		if(event.target.value.length === this.state.randSentence.length) {
-			this.setState({
-				gameOverModal: "block",
-				gameWinner: true
-			})
-		} else if(this.state.marvisPosition > window.innerWidth) {
+		if(this.state.marvisPosition > window.innerWidth) {
 			this.setState({
 				gameOverModal: "block"
 			})
 		}
 	}
 
+	handleChange = (event) => {
+		let ev = event
+		const reg = new RegExp(`^${event.target.value}`) //Add , 'i' for case insensitivity
+		if (!!this.state.randSentence.match(reg)){
+			this.setState({
+				userImgPosition: (window.innerWidth * (event.target.value.length/this.state.randSentence.length)),
+				currentText: event.target.value,
+				lastPressCorrect: 'true'
+			})
+			if(event.target.value.length === this.state.randSentence.length) {
+				this.setState({
+					gameOverModal: "block",
+					gameWinner: true
+				})
+		} else {
+			this.setState({
+				lastPressCorrect: 'false'
+			})
+		}
+	}
+}
+
 	render(){
-		console.log(this.state.marvisPosition)
-		console.log(window.innerWidth)
 		return(
 			<div className="game-container">
         <RaceTrack imgChangeAmt={this.state.userImgPosition}
