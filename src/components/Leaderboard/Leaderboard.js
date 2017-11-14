@@ -13,7 +13,6 @@ export default class Leaderboard extends React.Component {
 
 	render() {
 		let gameCells = this.sortGames().map((game, idx) => <Game username={game.user.username} wpm={game.wpm} rank={idx} key={idx} />)
-		console.log(gameCells)
     return(
       <div className="ui container">
         <h1>Type Kings Top 10</h1>
@@ -32,7 +31,7 @@ export default class Leaderboard extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {gameCells}
+            {gameCells.slice(0,10)}
           </tbody>
         </table>
       </div>
