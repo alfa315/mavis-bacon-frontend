@@ -117,7 +117,6 @@ export default class GameContainer extends Component {
 	}
 
 	render(){
-		console.log(this.state.gameWinner)
 		return(
 			<div className="game-container">
         <RaceTrack
