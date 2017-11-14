@@ -17,6 +17,9 @@ export default class GameOverModal extends React.Component {
               <p><img src={WavingFlag} alt="waving checkered flag" /><img src={WavingFlag} alt="waving checkered flag" /><img src={WavingFlag} alt="waving checkered flag" /></p>
             </div>
             <div className='modal-footer-win'>
+              <button onClick={this.props.handleClick} className='ui black button'>
+                Back to Leaderboard
+              </button>
             </div>
           </div>
         </div>
@@ -34,6 +37,9 @@ export default class GameOverModal extends React.Component {
                 <p>YOU LOSE, MARVIS IS THE BEST! YOUR WORDS PER MINUTE WAS: {this.props.wpm()}</p>
               </div>
               <div className='modal-footer-lose'>
+                <button onClick={this.props.handleClick} className='ui black button'>
+                  Back to Leaderboard
+                </button>
               </div>
             </div>
           </div>

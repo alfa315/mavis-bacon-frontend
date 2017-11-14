@@ -112,6 +112,10 @@ export default class GameContainer extends Component {
 		.then(res => res.json())
 	}
 
+	handleClick = (event) => {
+		window.location.reload()
+	}
+
 	render(){
 		console.log(this.state.gameWinner)
 		return(
@@ -136,6 +140,7 @@ export default class GameContainer extends Component {
 					gameWinner={this.state.gameWinner}
 					wpm={this.calculateWordsPerMin}
 					fetchGames={this.fetchGames}
+					handleClick={this.handleClick}
 				/>
 				<h3 className='CPM'>{!!this.calculateCharPerMin() ? this.calculateCharPerMin() : 0} Characters Per Minute</h3>
 			</div>
