@@ -16,7 +16,8 @@ export default class GameContainer extends Component {
 		gameOverModal: "none",
 		gameWinner: false,
 		correctCharPerMin: 0,
-		interval: null
+		interval: null,
+		acceptsInput: true
 	}
 
 	componentWillMount() {
@@ -45,7 +46,8 @@ export default class GameContainer extends Component {
 		})
 		if(this.state.marvisPosition > window.innerWidth) {
 			this.setState({
-				gameOverModal: "block"
+				gameOverModal: "block",
+				acceptsInput: false	
 			})
 			clearInterval(this.state.interval)
 		}
@@ -71,10 +73,12 @@ export default class GameContainer extends Component {
 				correctCharPerMin: this.calculateCharPerMin()
 			})
 			if(event.target.value.length === this.state.randSentence.length) {
+				event.preventDefault()
 				this.setState({
 					gameOverModal: "block",
 					gameWinner: true,
-					lastPressCorrect: 'true'
+					lastPressCorrect: 'true',
+					acceptsInput: false
 				})
 				clearInterval(this.state.interval)
 			}
@@ -116,6 +120,7 @@ export default class GameContainer extends Component {
 				<TextField
 					textValue={this.state.currentText}
 					handleChange={this.handleChange}
+					acceptsInput={this.state.acceptsInput}
 				/>
 				<FeedbackContainer
 					rightOrWrong={this.state.lastPressCorrect}
