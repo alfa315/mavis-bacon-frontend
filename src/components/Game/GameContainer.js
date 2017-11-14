@@ -48,18 +48,17 @@ export default class GameContainer extends Component {
 				gameOverModal: "block"
 			})
 			clearInterval(this.state.interval)
-			this.fetchGames()
 		}
 	}
 
 	calculateCharPerMin = () => {
-		let val = (this.state.currentText.length / this.state.raceTimer) * 60
+		let val = Math.round(this.state.currentText.length / this.state.raceTimer * 60)
 		return val
 	}
 
 	calculateWordsPerMin = () => {
 		let wordsCount = this.state.currentText !== "" ? this.state.currentText.split(" ").length : 0
-		return (wordsCount / this.state.raceTimer) * 60
+		return Math.round(wordsCount / this.state.raceTimer * 60)
 	}
 
 	handleChange = (event) => {
@@ -74,15 +73,15 @@ export default class GameContainer extends Component {
 			if(event.target.value.length === this.state.randSentence.length) {
 				this.setState({
 					gameOverModal: "block",
-					gameWinner: true
+					gameWinner: true,
+					lastPressCorrect: 'true'
 				})
 				clearInterval(this.state.interval)
-				this.fetchGames()
-			} else {
-				this.setState({
-					lastPressCorrect: 'false'
-				})
 			}
+		} else {
+			this.setState({
+				lastPressCorrect: 'false'
+			})
 		}
 	}
 
@@ -91,8 +90,8 @@ export default class GameContainer extends Component {
 			method: 'POST',
 			body: JSON.stringify({
 				wpm: `${this.calculateWordsPerMin()}`,
-				game_won: `${this.state.gameWinner}`,
-				user_id: `${this.props.currUserId}`
+				user_id: `${this.props.currUserId}`,
+				game_won: `${this.state.gameWinner}`
 			}),
 			headers: {
 				'Content-Type': 'application/json',
@@ -104,6 +103,7 @@ export default class GameContainer extends Component {
 	}
 
 	render(){
+		console.log(this.state.gameWinner)
 		return(
 			<div className="game-container">
         <RaceTrack
@@ -124,7 +124,9 @@ export default class GameContainer extends Component {
 					gameOverModal={this.state.gameOverModal}
 					gameWinner={this.state.gameWinner}
 					wpm={this.calculateWordsPerMin}
+					fetchGames={this.fetchGames}
 				/>
+				<h3 className='CPM'>{this.calculateCharPerMin()} Characters Per Minute</h3>
 			</div>
 		)
 	}
