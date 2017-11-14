@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import bacon from '../../assets/marvis.jpg'
-import marvis from '../../assets/mavis-beacon.jpg'
+import bacon from '../../assets/blu-car.png'
+import marvis from '../../assets/orange-car.png'
 
 export default class RaceTrack extends Component {
 	state = {
