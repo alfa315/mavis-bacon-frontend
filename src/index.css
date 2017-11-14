@@ -90,14 +90,46 @@ body {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+/* Modal Header */
+.modal-header-win {
+    padding: 2px 16px 15px;
+    background-color: rgb(51, 255, 51);
+    color: black;
+}
 
+/* Modal Body */
+.modal-body-win {padding: 2px 16px;}
+
+/* Modal Footer */
+.modal-footer-win {
+    padding: 2px 16px 20px;
+    background-color: rgb(51, 255, 51);
+    color: black;
+}
 /* Modal Content/Box */
 .modal-content-win {
-    background-color: green;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+   position: relative;
+   background-color: white;
+   margin: auto;
+   padding: 0;
+   border: 1px solid #888;
+   width: 80%;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+   -webkit-animation-name: animatetop;
+   -webkit-animation-duration: 0.4s;
+   animation-name: animatetop;
+   animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }
 
 /* The Close Button */
@@ -126,26 +158,71 @@ body {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-
-/* Modal Content/Box */
-.modal-content-lose {
+/* Modal Header */
+.modal-header-lose {
+    padding: 2px 16px 15px;
     background-color: red;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    color: black;
 }
 
-/* The Close Button */
+/* Modal Body */
+.modal-body-lose {padding: 2px 16px;}
+
+/* Modal Footer */
+.modal-footer-lose {
+    padding: 2px 16px 20px;
+    background-color: red;
+    color: black;
+}
+/* Modal Content/Box */
+.modal-content-lose {
+   position: relative;
+   background-color: white;
+   margin: auto;
+   padding: 0;
+   border: 1px solid #888;
+   width: 80%;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+   -webkit-animation-name: animatetop;
+   -webkit-animation-duration: 0.4s;
+   animation-name: animatetop;
+   animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
 .close-lose {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close-lose:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.good {
+  color: rgb(51, 204, 51);
+  font-weight: bold;
+}
+
+.bad {
+  color: red;
+  font-weight: bold;
+}
+
+.CPM {
+  color: blue;
 }
