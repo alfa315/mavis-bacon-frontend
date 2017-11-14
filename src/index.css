@@ -34,10 +34,6 @@ body {
 	height: 220px;
 }
 
-.sentence {
-
-}
-
 .text-field {
  margin-right: 20px;
 }
@@ -46,6 +42,10 @@ body {
 	font: 30px bold Arial, sans-serif;
 	line-height: 1.2em;
 	margin: 20px 0 15px 0;
+}
+
+.larger-text {
+  font-size: 18px;
 }
 
 #type-here {
