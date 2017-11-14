@@ -47,7 +47,7 @@ export default class GameContainer extends Component {
 		if(this.state.marvisPosition > window.innerWidth) {
 			this.setState({
 				gameOverModal: "block",
-				acceptsInput: false	
+				acceptsInput: false
 			})
 			clearInterval(this.state.interval)
 		}
@@ -136,7 +136,7 @@ export default class GameContainer extends Component {
 					wpm={this.calculateWordsPerMin}
 					fetchGames={this.fetchGames}
 				/>
-				<h3 className='CPM'>{this.calculateCharPerMin()} Characters Per Minute</h3>
+				<h3 className='CPM'>{!!this.calculateCharPerMin() ? this.calculateCharPerMin() : 0} Characters Per Minute</h3>
 			</div>
 		)
 	}
