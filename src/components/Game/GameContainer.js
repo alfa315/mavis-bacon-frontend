@@ -39,17 +39,19 @@ export default class GameContainer extends Component {
 	}
 
 	increaseMarvis = () => {
-		let difficulty = (window.innerWidth / this.state.randSentence.length) * 4
-		this.setState({
-			marvisPosition: this.state.marvisPosition + difficulty,
-			raceTimer: this.state.raceTimer + 1
-		})
-		if(this.state.marvisPosition > window.innerWidth) {
+		if(this.state.randSentence.length > 0) {
+			let difficulty = (window.innerWidth / this.state.randSentence.length) * 4
 			this.setState({
-				gameOverModal: "block",
-				acceptsInput: false
+				marvisPosition: this.state.marvisPosition + difficulty,
+				raceTimer: this.state.raceTimer + 1
 			})
-			clearInterval(this.state.interval)
+			if(this.state.marvisPosition > window.innerWidth) {
+				this.setState({
+					gameOverModal: "block",
+					acceptsInput: false
+				})
+				clearInterval(this.state.interval)
+			}
 		}
 	}
 
