@@ -12,6 +12,7 @@ export default class LoginForm extends React.Component{
 		    		onChange={this.props.handleChange}
 		    		className="text-field"
 		    		placeholder="Enter Username"
+		    		required="required"
 	    		/>
 		    	<input type="submit" value="Log In" className="ui button mini primary" />
 	    	</form>
