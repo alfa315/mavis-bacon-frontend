@@ -9,7 +9,12 @@ class App extends Component {
 
 	state = {
 		currUserName: '',
-		currUserId: null
+		currUserId: null,
+		gameData: []
+	}
+
+	componentWillMount() {
+		this.fetchGames()
 	}
 
 	fetchUser = () => {
@@ -26,6 +31,14 @@ class App extends Component {
     	currUserId: data.id
     }))
 	}
+
+	fetchGames = () => (
+		fetch('http://127.0.0.1:3000/api/v1/games')
+			.then(res => res.json())
+			.then(data => this.setState({
+				gameData: data
+			}))
+	)
 
 	handleChange = (ev) => {
 		this.setState({
@@ -56,7 +69,7 @@ class App extends Component {
 	        	handleSubmit={this.handleSubmit} 
 	        	handleChange={this.handleChange} 
         	/>
-	        <Home />
+	        <Home games={this.state.gameData} />
 	      </div>
 			)
   	}
