@@ -40,7 +40,7 @@ export default class GameContainer extends Component {
 
 	increaseMarvis = () => {
 		if(this.state.randSentence.length > 0) {
-			let difficulty = (window.innerWidth / this.state.randSentence.length) * 4
+			let difficulty = (window.innerWidth / this.state.randSentence.length) * 0
 			this.setState({
 				marvisPosition: this.state.marvisPosition + difficulty,
 				raceTimer: this.state.raceTimer + 1
@@ -141,7 +141,8 @@ export default class GameContainer extends Component {
 					fetchGames={this.fetchGames}
 					handleClick={this.handleClick}
 				/>
-				<h3 className='CPM'>{!!this.calculateCharPerMin() ? this.calculateCharPerMin() : 0} Characters Per Minute</h3>
+				<h3 className='CPM'>{!!this.calculateCharPerMin() ? this.calculateCharPerMin() : 0}</h3>
+				<p>Characters Per Minute</p>
 			</div>
 		)
 	}
