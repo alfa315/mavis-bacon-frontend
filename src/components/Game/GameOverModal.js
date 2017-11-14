@@ -1,4 +1,5 @@
 import React from 'react'
+import WavingFlag from '../../assets/waving-checkered-flag.gif'
 
 export default class GameOverModal extends React.Component {
   render() {
@@ -13,6 +14,7 @@ export default class GameOverModal extends React.Component {
             </div>
             <div className='modal-body-win'>
               <p>YOU WON, YOU BEAT MARVIS! YOUR WORDS PER MINUTE WAS: {this.props.wpm()}</p>
+              <p><img src={WavingFlag} alt="waving checkered flag" /><img src={WavingFlag} alt="waving checkered flag" /><img src={WavingFlag} alt="waving checkered flag" /></p>
             </div>
             <div className='modal-footer-win'>
             </div>
