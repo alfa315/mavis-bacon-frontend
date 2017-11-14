@@ -1,10 +1,22 @@
 import React from 'react'
 import WavingFlag from '../../assets/waving-checkered-flag.gif'
+import LoseSound from '../../assets/lose.wav'
+import WinSound from '../../assets/win.wav'
 
 export default class GameOverModal extends React.Component {
+  loseSound = () =>{
+    let loseSound = new Audio(LoseSound)
+    loseSound.play()
+  }
+
+  winSound = () =>{
+    let winSound = new Audio(WinSound)
+    winSound.play()
+  }
   render() {
     if (this.props.gameWinner === true) {
       this.props.fetchGames()
+      this.winSound()
       return(
         <div className='modal-win' style={{display: this.props.gameOverModal}}>
           <div className='modal-content-win'>
@@ -26,6 +38,7 @@ export default class GameOverModal extends React.Component {
       )
     } else if(this.props.gameWinner === false && this.props.gameOverModal === "block") {
         this.props.fetchGames()
+        this.loseSound()
         return(
           <div className='modal-lose' style={{display: this.props.gameOverModal}}>
             <div className='modal-content-lose'>
