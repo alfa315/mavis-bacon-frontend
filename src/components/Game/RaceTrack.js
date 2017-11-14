@@ -11,11 +11,11 @@ export default class RaceTrack extends Component {
 		return(
 			<div className="racetrack">
 				<div className="lane lane-divider">
-					<img className="pig-image" src={bacon} alt="user" style={{left: this.props.imgChangeAmt, top: 115}}/>
+					<img className="pig-image" src={bacon} alt="user" style={{left: this.props.imgChangeAmt, top: 73}}/>
 				</div>
 
 				<div className="lane">
-					<img className="marvis-image" src={marvis} alt="Marvis Bacon" style={{left: this.props.marvisImgChg, top: 225}}/>
+					<img className="marvis-image" src={marvis} alt="Marvis Bacon" style={{left: this.props.marvisImgChg, top: 183}}/>
 				</div>
 			</div>
 		)

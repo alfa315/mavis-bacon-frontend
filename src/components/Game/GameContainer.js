@@ -63,8 +63,13 @@ export default class GameContainer extends Component {
 		return Math.round(wordsCount / this.state.raceTimer * 60)
 	}
 
+	cleanInputForRegex = (text) => {
+		return text.replace(/\?/g, '\\?').replace(/\./g, '\\.')
+	}
+
 	handleChange = (event) => {
-		const reg = new RegExp(`^${event.target.value}`) //Add , 'i' for case insensitivity
+		const newEv = this.cleanInputForRegex(event.target.value)
+		const reg = new RegExp(`^${newEv}`) //Add , 'i' for case insensitivity
 		if (!!this.state.randSentence.match(reg)){
 			this.setState({
 				userImgPosition: (window.innerWidth * (event.target.value.length/this.state.randSentence.length)),
