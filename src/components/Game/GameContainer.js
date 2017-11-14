@@ -40,7 +40,7 @@ export default class GameContainer extends Component {
 
 	increaseMarvis = () => {
 		if(this.state.randSentence.length > 0) {
-			let difficulty = (window.innerWidth / this.state.randSentence.length) * 0
+			let difficulty = (window.innerWidth / this.state.randSentence.length) * 4.5
 			this.setState({
 				marvisPosition: this.state.marvisPosition + difficulty,
 				raceTimer: this.state.raceTimer + 1
