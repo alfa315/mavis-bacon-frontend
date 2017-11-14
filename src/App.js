@@ -29,7 +29,7 @@ class App extends Component {
     .then(res => res.json())
     .then(data => this.setState({
     	currUserId: data.id
-    }))
+    })).then()
 	}
 
 	fetchGames = () => (
@@ -53,10 +53,14 @@ class App extends Component {
 
   render() {
   	if (this.state.currUserId) {
+			// localStorage.setItem('userId', this.state.currUserId)
 	    return (
 	      <div className="App">
-	        <GameHeader />
-	        <GameContainer 
+	        <GameHeader
+						username={this.state.currUserName}
+						userId={this.state.currUserId}
+					/>
+	        <GameContainer
 	        	currUserName={this.state.currUserName}
 	        	currUserId={this.state.currUserId}
         	/>
@@ -65,9 +69,9 @@ class App extends Component {
   	} else {
   		return (
   			<div className="App">
-	        <LoginHeader 
-	        	handleSubmit={this.handleSubmit} 
-	        	handleChange={this.handleChange} 
+	        <LoginHeader
+	        	handleSubmit={this.handleSubmit}
+	        	handleChange={this.handleChange}
         	/>
 	        <Home games={this.state.gameData} />
 	      </div>
