@@ -48,6 +48,7 @@ export default class GameOverModal extends React.Component {
               </div>
               <div className='modal-body-lose'>
                 <p>YOU LOSE, MARVIS IS THE BEST! YOUR WORDS PER MINUTE WAS: {this.props.wpm()}</p>
+                <p><img src="https://media.giphy.com/media/EndO2bvE3adMc/giphy.gif" alt="YOU LOSE" /></p>
               </div>
               <div className='modal-footer-lose'>
                 <button onClick={this.props.handleClick} className='ui black button'>
