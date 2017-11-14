@@ -4,9 +4,22 @@ import Game from './Game.js'
 
 export default class Leaderboard extends React.Component {
 
+
+	sortGames = () => {
+		return this.props.games.sort((g1, g2) => {
+			if (+g2.wpm > +g1.wpm) {
+				return 1
+			}
+			if (+g2.wpm < +g1.wpm)	{
+				return -1
+			}
+			return 0
+		})
+	}
+
 	render() {
-    
-    let gameCells = this.props.games.map((game, idx) => <Game username={game.user.username} wpm={game.wpm} gameId={game.id} key={idx} />)
+		let gameCells = this.sortGames().map((game, idx) => <Game username={game.user.username} wpm={game.wpm} gameId={game.id} key={idx} />)
+
     return(
       <div className="ui container">
         <h1>Type Kings Leaderboard</h1>
@@ -25,7 +38,7 @@ export default class Leaderboard extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {gameCells}
+            {gameCells.sort((g1, g2) => {g2.props.wpm > g1.props.wpm})}
           </tbody>
         </table>
       </div>

@@ -6,12 +6,12 @@ export default class LoginForm extends React.Component{
  		return (
  			<div className="item">
 	 	   	<form className="login-block" onSubmit={this.props.handleSubmit}>
-		    	<input 
+		    	<input
 		    		type="text"
 		    		name="username"
-		    		onChange={this.props.handleChange} 
+		    		onChange={this.props.handleChange}
 		    		className="text-field"
-		    		placeHolder="Enter Username"
+		    		placeholder="Enter Username"
 	    		/>
 		    	<input type="submit" value="Log In" className="ui button mini primary" />
 	    	</form>
