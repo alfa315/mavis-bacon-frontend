@@ -45,6 +45,7 @@ class App extends Component {
 		this.setState({
 			currUserName: ev.target.value
 		})
+	}
 
 
 	handleSubmit = (ev) => {
