@@ -14,7 +14,7 @@ export default class LoginForm extends React.Component{
 		    		placeholder="Enter Username"
 		    		required="required"
 	    		/>
-		    	<input type="submit" value="Log In" className="ui button mini primary" />
+		    	<input type="submit" value="Go Race" className="ui button mini primary" />
 	    	</form>
     	</div>
   	)
