@@ -97,7 +97,7 @@ export default class GameContainer extends Component {
 	}
 
 	fetchGames = () => {
-		fetch('http://127.0.0.1:3000/api/v1/games', {
+		fetch('https://ancient-taiga-61189.herokuapp.com/api/v1/games', {
 			method: 'POST',
 			body: JSON.stringify({
 				wpm: `${this.calculateWordsPerMin()}`,

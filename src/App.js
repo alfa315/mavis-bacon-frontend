@@ -17,8 +17,9 @@ class App extends Component {
 		this.fetchGames()
 	}
 
+
 	fetchUser = () => {
-		fetch('http://127.0.0.1:3000/api/v1/users', {
+		fetch('https://ancient-taiga-61189.herokuapp.com/api/v1/users', {
       method: 'POST',
       body: JSON.stringify({username: `${this.state.currUserName}`}),
       headers: {
@@ -29,11 +30,11 @@ class App extends Component {
     .then(res => res.json())
     .then(data => this.setState({
     	currUserId: data.id
-    })).then()
+    }))
 	}
 
 	fetchGames = () => (
-		fetch('http://127.0.0.1:3000/api/v1/games')
+		fetch('https://ancient-taiga-61189.herokuapp.com/api/v1/games')
 			.then(res => res.json())
 			.then(data => this.setState({
 				gameData: data
@@ -44,7 +45,7 @@ class App extends Component {
 		this.setState({
 			currUserName: ev.target.value
 		})
-	}
+
 
 	handleSubmit = (ev) => {
 		ev.preventDefault();
